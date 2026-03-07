@@ -13,7 +13,7 @@ signinBtn.addEventListener('click', () => {
   // match username or password
   if(collectUserName === "admin" && collectPassword === "admin123") {
     alert("Sign In success");
-    window.location.assign("/home.html");
+    window.location.href = "home.html";
   }else {
     alert("Invalid username or password");
     return;
