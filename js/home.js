@@ -100,7 +100,8 @@ const filterPosts = (status) => {
             </div>
           </div>
           <div class="border-t-2 p-4 border-gray-100">
-            <span>${post.author}</span>
+            <p class="text-[13px] text-gray-600">#1 by ${post.author}</p>
+            <p class="text-[12px] text-gray-500">${post.createdAt}</p>
           </div>
         </div>
       </div>

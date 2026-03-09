@@ -1,0 +1,2 @@
+1. var is old and its value cannot be changed and reassigned. So many errors have to be faced let is update can be used to change any value and const is best and its value cannot be changed and reassigned. 
+2. 
