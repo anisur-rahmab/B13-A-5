@@ -8,6 +8,8 @@
   <!-- tailwind & daisyUI -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- box icon -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,13 +18,93 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="bg-base-200 min-h-screen">
+
+
+<section class="bg-white shadow py-3">
+  <header class="flex justify-between items-center w-[90%] mx-auto">
+    <div class="logo flex items-center gap-1">
+      <img class="w-[30px]" src="./assets/github-logo.png">
+      <h2 class="text-[16px] font-semibold">GitHub Issues Tracker</h2>
+    </div>
+
+    <div class="search-input">
+      
+      <div class="join">
+        <div>
+          <label class="input validator join-item">
+            <input id="search-input" type="text" placeholder="Search Issue..." required />
+          </label>
+          
+        </div>
+        <button id="search-btn" class="btn btn-primary text-white join-item"> <i class='bx bx-plus'></i> New Issue</button>
+      </div>
+    
+    </div>
+
+  </header>
+</section>
+
+<section>
+  <nav class="bg-white mt-12 w-[80%] mx-auto p-4 rounded-sm shadow">
+    <button class="filter-btn btn w-[100px] bg-blue-600 text-white text-[12px]" data-status="all">All</button>
+    <button class="filter-btn btn w-[100px] text-[12px]" data-status="open">Open</button>
+    <button class="filter-btn btn w-[100px] text-[12px]" data-status="closed">Closed</button>
+  </nav>
+</section>
+
+<section class="w-[80%] mx-auto rounded-md bg-white">
+  <div class="flex justify-between items-center p-4 mt-3 border-b border-gray-200 ">
+    <div class="flex items-center gap-1">
+      <div class="w-10 h-10 bg-blue-100 flex justify-center items-center rounded-full">
+        <img class="w-[26px]" src="./assets/Aperture.png">
+      </div>
+      <div>
+        <h2 class="font-semibold"> <span id="total-issues">0</span> Issues</h2>
+        <p class="text-[12px] text-gray-500">Track and manage your project issues</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 bg-green-600 rounded-full"></span>
+      <p class="text-[13px] text-green-600">Open</p>
+      <span class="w-2 h-2 bg-purple-600 rounded-full ml-2"></span>
+      <p class="text-[13px] text-purple-600 ">Closed</p>
+    </div>
+  </div>
+  
+  
+  <main class="bg-gray-100 p-4">
+    <div id="box-container" class="grid grid-cols-4 gap-5">
+      
+    </div>
+    
+  </main>
+</section>
+
+<!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="box_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="box-details">
+      
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn bg-blue-600 text-white outline-none">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 
 
 
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, provident reiciendis. Sed officiis minus reiciendis! Quibusdam officia libero quaerat reprehenderit laboriosam placeat deserunt eos, atque quas molestiae velit aspernatur voluptatibus esse, numquam ipsam. Totam ratione sapiente vel numquam rerum distinctio nostrum laborum veritatis quam illo consequuntur esse magni obcaecati dolorum, inventore nobis molestiae itaque. Architecto error recusandae id, necessitatibus reiciendis dolor cupiditate accusamus nulla explicabo perspiciatis magnam nemo laboriosam? Natus cupiditate accusantium dolores tempore perferendis ex sunt, numquam labore repudiandae! Ex numquam eos illo quas corrupti vitae quam doloribus fugiat vel error quae laboriosam recusandae vero, repellat voluptates, dicta eius. Eligendi qui omnis esse itaque. Similique architecto sequi accusantium non perferendis dicta explicabo porro in a veritatis aspernatur velit officia animi quidem, cum dolor quam omnis. Rem placeat reiciendis asperiores, ea dicta earum eius! Sunt mollitia ut, error obcaecati nemo necessitatibus. Soluta dolorum, blanditiis amet expedita pariatur labore nemo et repellendus quam earum repellat recusandae sapiente enim temporibus sequi? Neque assumenda voluptate, ea repudiandae aspernatur, dolore eum dicta aut qui, quibusdam harum rem quasi molestias dolorem iusto aperiam porro nostrum dolores provident velit. Deleniti veniam officiis porro. Molestiae nisi exercitationem, sapiente delectus dicta illo quis. Veniam officia architecto iste aspernatur accusamus dolorum et deleniti sunt. Nam consequuntur blanditiis, aperiam voluptatibus dolorem reprehenderit soluta unde libero consectetur nihil nesciunt iusto atque dolore quod ipsam sit aliquid, et veritatis. Quos, temporibus ex. A dolorem ipsa error voluptas facere est sit, maxime nesciunt! Hic nihil minus dignissimos incidunt, expedita deserunt officia inventore explicabo quod totam est ex quaerat ullam qui libero in molestias voluptatibus vel, fuga, ducimus labore illo provident? Quod porro perferendis alias harum facere. Totam eveniet, iste provident assumenda minus aut velit pariatur odio numquam ad deserunt quam nemo molestias nam deleniti incidunt eius cum inventore, obcaecati sint in ipsam et maxime aspernatur? Mollitia exercitationem ullam tenetur officia nemo rerum non atque ab commodi laborum, fugiat quo consequuntur optio repellendus voluptates facilis nam quibusdam quaerat laudantium saepe. Ex velit atque laudantium quas illum quis nihil reiciendis, nulla corrupti, nostrum facere doloribus veritatis ducimus unde eveniet praesentium! Non, ea. Earum sequi magni at, mollitia deserunt ea porro aspernatur voluptates! Enim obcaecati unde nemo aperiam maiores in praesentium consequatur! Porro nobis temporibus soluta quos, odio dignissimos eligendi dolorem mollitia at, error dolores? Pariatur est ab praesentium placeat distinctio ullam dolore quam velit, enim asperiores fuga dicta rerum omnis quo laborum corporis illum autem quaerat laboriosam? Possimus minima voluptatem, quos odio vero, quidem ipsa obcaecati dolore, repudiandae voluptate aperiam exercitationem enim magni nisi optio recusandae voluptas deserunt voluptatibus soluta nostrum earum reprehenderit! Cumque possimus aperiam quisquam repellendus dolor, ipsum doloremque dolorum illum vel saepe facere suscipit neque commodi impedit magni quos ratione voluptates, perferendis consequatur, dolore culpa praesentium unde. Ratione placeat aut quis officia quos illo sunt quaerat culpa provident labore! Magni repudiandae voluptas explicabo libero cum totam asperiores molestias nihil corporis assumenda atque quo quis eveniet ipsam sint necessitatibus culpa iure adipisci ullam odit dolore similique, eligendi iste. Blanditiis sunt repellat minima. Consequuntur.</p>
+
+
+
+
 
   
 
